@@ -9,7 +9,7 @@ Tietokanta palvelimella:
 
 mysql -u (käyttäjänimi) -p,
 sama salasana: test123
--> siellä 'Musiikki' -db
+-> siellä sijaitsee 'Musiikki' -db
 
 
 
