@@ -39,6 +39,11 @@ ul {
     width: 70%;
     text-align: center;
     margin: 30px auto auto;
+
+}
+
+#global-feed img {
+    width: 50%;
 }
 
 .feed-box {

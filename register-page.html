@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
 </head>
 <body>
+<form novalidate onsubmit="return registerEvent(event)">
+    <label>First name: <input type="text" name="firstname" required>
+    </label>
+    <br>
+    <label>Last name: <input type="text" name="lastname" required>
+    </label>
+    <br>
+    <label>Username: <input type="text" name="username" required>
+    </label>
+    <br>
+    <label>Password: <input type="password" name="password" required>
+    </label>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
 
 </body>
 </html>
