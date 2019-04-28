@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: salmon;
+    min-width: 300px;
 }
 
 ul {
@@ -12,8 +13,8 @@ ul {
     position: fixed;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     top: 0;
+    overflow: hidden;
     background-color: cadetblue;
 }
 
@@ -23,7 +24,7 @@ ul {
 
 .register-login a{
     display: flex;
-    width: 60px;
+    width: 70px;
     color: black;
     text-decoration: none;
     text-align: center;
@@ -36,7 +37,6 @@ ul {
 }
 
 #global-feed {
-    width: 70%;
     text-align: center;
     margin: 30px auto auto;
 
@@ -49,4 +49,12 @@ ul {
 .feed-box {
     padding: 16px;
 }
+
+@media only screen and (min-width: 300px)  {
+    .form-div {
+        text-align: center;
+        width: 90%;
+    }
+}
+
 
