@@ -39,15 +39,37 @@ ul {
 #global-feed {
     text-align: center;
     margin: 30px auto auto;
+    width: 90%;
 
 }
 
 #global-feed img {
     width: 50%;
+    padding: 10px;
 }
 
 .feed-box {
-    padding: 16px;
+    padding: 6px;
+    border-style: groove;
+    margin-top: 40px;
+}
+
+#feed-bar {
+    align-items: center;
+    display: flex;
+    height: 30px;
+    min-width: 250px;
+}
+
+#feed-right {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+#feed-bar img {
+    height: 40px;
+    width: 40px;
 }
 
 @media only screen and (min-width: 300px)  {

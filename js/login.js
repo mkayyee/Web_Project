@@ -1,3 +1,5 @@
+'use strict';
+
 const loginEvent = (thisEvent) => {
   let list = document.querySelectorAll('input');
   for (let i = 0; i < list.length; i++) {
