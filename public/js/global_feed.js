@@ -11,6 +11,28 @@ const updateFeed = () => {
   }
 };
 
+const addModal = () => {
+  //Modal menu
+  const modal = document.createElement('div');
+  modal.id = 'button-modal';
+  modal.classList.add('modal');
+  const modalButtons = document.createElement('div');
+  modalButtons.classList.add('modal-inner');
+  const button1 = document.createElement('button');
+  button1.innerText = 'Comment';
+  const button2 = document.createElement('button');
+  button2.innerText = 'Like';
+  const button3 = document.createElement('button');
+  button3.innerText = 'Remove';
+
+  modalButtons.appendChild(button1);
+  modalButtons.appendChild(button2);
+  modalButtons.appendChild(button3);
+  modal.appendChild(modalButtons);
+
+  document.getElementById('global-feed').appendChild(modal);
+};
+
 const articleContent = () => {
   let article = document.createElement('article');
   article.classList.add('feed-box');
@@ -31,13 +53,15 @@ const articleContent = () => {
 
   //Feed dropdown menu
   const menu = document.createElement('div');
+  menu.id = 'dropdown-menu';
   const menuButton = document.createElement('button');
+  menuButton.id = 'menuButton';
   const menuIcon = document.createElement('i');
   menuIcon.classList.add('fas', 'fa-angle-down');
   menuButton.appendChild(menuIcon);
-  menuButton.onclick = menuFunction();
-  menu.appendChild(menuButton);
+  menuButton.onclick = menuFunction;
 
+  menu.appendChild(menuButton);
   //Create feed bar right side
   const barRight = document.createElement('div');
   barRight.id = 'feed-right';
@@ -65,7 +89,14 @@ const articleContent = () => {
 };
 
 const menuFunction = () => {
-
+  document.getElementById('button-modal').style.display = 'block';
 };
 
+window.onclick = (event) => {
+  if(event.target === document.getElementById('button-modal')) {
+    document.getElementById('button-modal').style.display = 'none';
+  }
+}
+
 updateFeed();
+addModal();
