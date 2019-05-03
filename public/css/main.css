@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     background-color: salmon;
@@ -40,7 +45,19 @@ ul {
     text-align: center;
     margin: 30px auto auto;
     width: 90%;
+}
 
+/*profile items like profile photo, username etc*/
+#profile-content {
+    margin: 30px auto;
+    width: 90%;
+    align-items: center;
+}
+
+#profile-header {
+    align-items: center;
+    display: flex;
+    min-width: 250px;
 }
 
 #global-feed img {
