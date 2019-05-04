@@ -8,18 +8,58 @@
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 </head>
 <body>
+
 <ul class="register-login">
-    <li><a href="register.html">Register</a></li>
-    <li><a href="login-page.html">Log in</a></li>
+    <li><button id="reg-button">Register</button></a></li>
+    <li><button id="login-button">Log In</button></li>
 </ul>
+
+<div class="form-div" id="login-form">
+    <form novalidate onsubmit="return loginEvent(event)">
+        <label>Username: <input type="text" name="username" required>
+        </label>
+        <br>
+        <label>Password: <input type="password" name="password" required>
+        </label>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <button id="login-close">Close</button>
+</div>
+
+<div class="form-div" id="register-form">
+    <form name="register-form" onsubmit="return registerValid(event)">
+        <label>First name: <input type="text" name="firstname">
+        </label>
+        <br>
+        <label>Last name: <input type="text" name="lastname">
+        </label>
+        <br>
+        <label>Username: <input type="text" name="username">
+        </label>
+        <br>
+        <label>Password: <input type="password" name="password1">
+        </label>
+        <br>
+        <label>Repeat password: <input type="password" name="password2">
+        </label>
+        <br><br>
+        <input type="submit" value="Register">
+    </form>
+    <button id="register-close">Close</button>
+</div>
+
+
+
 <div id="global-feed">
 <!-- Global feed elements load here -->
 </div>
 <script src="js/main.js">
 
 </script>
-<script src="js/global_feed.js">
-
-</script>
+<script src="js/global_feed.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/login.js"></script>
+<script src="js/register.js"></script>
 </body>
 </html>

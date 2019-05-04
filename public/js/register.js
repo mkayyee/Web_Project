@@ -1,3 +1,4 @@
+
 const registerValid = (event) => {
 
   let firstName = document.forms['register-form']['firstname'].value;
