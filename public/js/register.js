@@ -1,3 +1,4 @@
+'use strict';
 
 const registerValid = (event) => {
 
@@ -64,7 +65,5 @@ const registerSubmit = () => {
   fetch('./register', settings)
       .then((response) => {
         return response.json();
-  }).then((json) => {
-    console.log(json);
-  });
+  })
 };

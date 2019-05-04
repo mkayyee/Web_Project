@@ -8,15 +8,16 @@
 </head>
 <body>
 <div class="form-div">
-    <form novalidate onsubmit="return loginEvent(event)">
+    <form method="POST" name="login-form" onsubmit="return loginValid(event)">
         <label>Username: <input type="text" name="username" required>
         </label>
         <br>
         <label>Password: <input type="password" name="password" required>
         </label>
         <br><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Login">
     </form>
 </div>
+<script src="js/login.js"></script>
 </body>
 </html>

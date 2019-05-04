@@ -10,12 +10,14 @@
 <body>
 
 <ul class="register-login">
-    <li><button id="reg-button">Register</button></a></li>
+    <li><button id="reg-button">Register</button></li>
     <li><button id="login-button">Log In</button></li>
+    <li><button id="logout">Logout</button></li>
 </ul>
 
+
 <div class="form-div" id="login-form">
-    <form novalidate onsubmit="return loginEvent(event)">
+    <form method="POST" name="login-form" novalidate onsubmit="return loginValid(event)">
         <label>Username: <input type="text" name="username" required>
         </label>
         <br>
@@ -28,7 +30,7 @@
 </div>
 
 <div class="form-div" id="register-form">
-    <form name="register-form" onsubmit="return registerValid(event)">
+    <form method="POST" name="register-form" onsubmit="return registerValid(event)">
         <label>First name: <input type="text" name="firstname">
         </label>
         <br>
@@ -49,14 +51,10 @@
     <button id="register-close">Close</button>
 </div>
 
-
-
 <div id="global-feed">
 <!-- Global feed elements load here -->
 </div>
-<script src="js/main.js">
-
-</script>
+<script src="js/main.js"></script>
 <script src="js/global_feed.js"></script>
 <script src="js/profile.js"></script>
 <script src="js/login.js"></script>

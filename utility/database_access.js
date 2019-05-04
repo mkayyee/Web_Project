@@ -27,20 +27,20 @@ const registerUser = (data, next) => {
         'INSERT INTO Users (firstname, lastname, username, password) VALUES (?, ?, ?, ?);',
         data,
         (err, results, fields) => {
-            console.log(results);
-            console.log(err);
+            //console.log(results);
+            //console.log(err);
         },
     )
 };
 
 const findByUser = (username, cb) => {
-    database.connect().execute(
+    database.connect().query(
         'SELECT * FROM Users WHERE username = ?;',
         username,
         (err, results, fields) => {
-            console.log('results', results);
-            console.log(err);
-            cb();
+            //console.log('results', results);
+            //console.log(err);
+          cb(err, results);
         },
     );
 };

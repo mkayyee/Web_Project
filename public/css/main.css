@@ -27,7 +27,7 @@ ul {
     float: right;
 }
 
-.register-login a {
+.register-login button {
     display: flex;
     width: 70px;
     color: black;
@@ -35,9 +35,11 @@ ul {
     text-align: center;
     height: 40px;
     align-items: center;
+    background: cadetblue;
+    border: none;
 }
 
-.register-login li a:hover {
+.register-login li button:hover {
     background-color: darkcyan;
 }
 
