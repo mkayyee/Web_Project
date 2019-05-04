@@ -33,7 +33,7 @@ passport.deserializeUser((user, cb) => {
 const register = (req, res, next) => {
   const saltRounds = 12;
   bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
-    databaseAccess.registerUser([req.body.firstname, req.body.lastname, req.body.username, hash] ,next);
+    databaseAccess.checkUser([req.body.firstname, req.body.lastname, req.body.username, hash] ,next);
   });
 };
 

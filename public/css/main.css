@@ -115,3 +115,20 @@ ul {
     width: 100%;
     height: 40px;
 }
+#register-form{
+    visibility: hidden;
+    background-color: white;
+    border: 1px solid black;
+}
+#login-form{
+
+    visibility: hidden;
+    background-color: white;
+    border: 1px solid black;
+}
+.form-div{
+    height: 100%;
+    width: 100%;
+    alignment: center;
+    position: fixed;
+}
