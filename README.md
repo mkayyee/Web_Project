@@ -23,4 +23,4 @@ HUOM! metropolian VPN pitää olla päällä
 }
 
 
-http://10.114.32.51/~musiikki_2/Web_Project/public/ <-- etusivu
+https://10.114.32.51/~musiikki_2/public/ <-- etusivu
