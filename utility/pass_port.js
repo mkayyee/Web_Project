@@ -68,7 +68,7 @@ const register = (req, res, next) => {
         console.log('Username taken')
       }
       else{
-        databaseAccess.registerUser([req.body.firstname, req.body.lastname, req.body.username, hash] ,next);
+        databaseAccess.registerUser([req.body.firstname, req.body.lastname, req.body.username, hash,req.body.location,req.body.birthday] ,next);
       }
     });
   });

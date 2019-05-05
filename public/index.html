@@ -13,8 +13,10 @@
     <li><button id="reg-button">Register</button></li>
     <li><button id="login-button">Log In</button></li>
     <li><button id="logout">Logout</button></li>
-</ul>
+    <li><img id="profile-pic" src="https://img.icons8.com/dotty/2x/user.png"></li>
+    <li id="user"></li>
 
+</ul>
 
 <div class="form-div" id="login-form">
     <form method="POST" name="login-form" novalidate onsubmit="return loginValid(event)">
@@ -39,6 +41,10 @@
         <br>
         <label>Username: <input type="text" name="username">
         </label>
+        <br>
+        <label>Birthday: <input type="date" name="birthday"></label>
+        <br>
+        <label>Location: <input type="text" name="location"></label>
         <br>
         <label>Password: <input type="password" name="password1">
         </label>

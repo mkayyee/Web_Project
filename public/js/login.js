@@ -39,7 +39,7 @@ const loginSubmit = () => {
   .then((response) => {
     return response.json();
   }).then((json) => {
-    hideLogReg();
+    hideLogReg(userName);
     showLogout();
   });
 };

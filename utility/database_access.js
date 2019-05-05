@@ -4,7 +4,7 @@ const database = require('./database');
 const registerUser = (data, next) => {
     database.connect().execute(
         //Implement database insert
-        'INSERT INTO Users (firstname, lastname, username, password) VALUES (?, ?, ?, ?);',
+        'INSERT INTO Users (firstname, lastname, username, password, location, birthday) VALUES (?, ?, ?, ?, ?, ?);',
         data,
         (err, results, fields) => {
             if (err === null){

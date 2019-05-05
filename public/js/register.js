@@ -7,12 +7,16 @@ const registerValid = (event) => {
   let userName = document.forms['register-form']['username'].value;
   let password = document.forms['register-form']['password1'].value;
   let passwordAgain = document.forms['register-form']['password2'].value;
+  let location = document.forms['register-form']['location'].value;
+  let birthday = document.forms['register-form']['birthday'].value;
 
   const data = JSON.stringify({
     firstname: firstName,
     lastname: lastName,
     username: userName,
-    password: password
+    password: password,
+    location: location,
+    birthday: birthday,
   });
 
   if (firstName === "") {
@@ -27,6 +31,14 @@ const registerValid = (event) => {
 
   if (userName === "") {
     alert("Username is missing.");
+    return false;
+  }
+  if (location === "") {
+    alert("Choose a location.");
+    return false;
+  }
+  if (birthday === "") {
+    alert("Select your date of birth.");
     return false;
   }
 
@@ -46,13 +58,13 @@ const registerValid = (event) => {
 
   event.preventDefault();
 
-  registerSubmit(data,(err)=>{
+  registerSubmit(data,userName,(err)=>{
     if (err){
       alert('Username taken.')
     }
   })
 };
-const registerSubmit = (data) => {
+const registerSubmit = (data,username) => {
 
   const settings = {
     method: 'POST',
@@ -66,7 +78,7 @@ const registerSubmit = (data) => {
       .then((response) => {
         return response.json();
   }).then((json) =>{
-    hideLogReg();
+    hideLogReg(username);
     showLogout();
   })
 };

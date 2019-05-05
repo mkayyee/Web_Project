@@ -7,6 +7,8 @@ const loginButton = document.querySelector('#login-button');
 const loginClose = document.querySelector('#login-close');
 const loginForm = document.querySelector('#login-form');
 const logOutBtn = document.querySelector("#logout");
+const showUsername = document.querySelector('#user');
+const profilePic = document.querySelector('#profile-pic');
 
 logOutBtn.style.visibility = 'hidden';
 
@@ -38,11 +40,14 @@ loginClose.addEventListener("click", () => {
 
 
 
-const hideLogReg = () => {
+const hideLogReg = (user) => {
   regButton.style.display = 'none';
   loginButton.style.display = "none";
   loginForm.style.display = 'none';
   regForm.style.display = 'none';
+  showUsername.textContent = user;
+  showUsername.style.visibility = 'visible';
+  profilePic.style.visibility = 'visible';
 };
 
 const showLogout = () => {

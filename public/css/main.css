@@ -134,3 +134,12 @@ ul {
     alignment: center;
     position: fixed;
 }
+#user{
+    visibility: hidden;
+}
+#profile-pic{
+    visibility: hidden;
+    height: 40px;
+    width: auto;
+
+}
