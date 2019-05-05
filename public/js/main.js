@@ -59,3 +59,23 @@ const logOut = () => {
 };
 
 logOutBtn.addEventListener('click', logOut);
+
+const frm = document.querySelector('#upload-form');
+
+const sendForm = (evt) => {
+  evt.preventDefault();
+  const fd = new FormData(frm);
+  const settings = {
+    method: 'post',
+    body: fd,
+  };
+
+  fetch('./image', settings).then((response) => {
+    return response.json();
+  }).then((json) => {
+    console.log(json);
+    frm.reset();
+  });
+};
+frm.addEventListener('submit', sendForm);
+

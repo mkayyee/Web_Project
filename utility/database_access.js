@@ -24,8 +24,23 @@ const findByUser = (username, cb) => {
         },
     );
 };
+const insert = (data, res) => {
+    database.connect().execute(
+        // 'INSERT INTO Media (uploader_ID, title, link) VALUES (?,?,?);', <--- when req.user.id works
+        'INSERT INTO Media (title, link) VALUES (?,?);',
+        data,
+        (err, results,) => {
+            if (err == null) {
+                res.send(results);
+            } else {
+                console.log(err);
+            }
+        },
+    );
+};
 
 module.exports = {
     registerUser: registerUser,
     findByUser: findByUser,
+    insert: insert,
 };
