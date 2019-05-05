@@ -8,6 +8,13 @@ const registerValid = (event) => {
   let password = document.forms['register-form']['password1'].value;
   let passwordAgain = document.forms['register-form']['password2'].value;
 
+  const data = JSON.stringify({
+    firstname: firstName,
+    lastname: lastName,
+    username: userName,
+    password: password
+  });
+
   if (firstName === "") {
     alert("First name is missing.");
     return false;
@@ -38,21 +45,14 @@ const registerValid = (event) => {
   }
 
   event.preventDefault();
-  registerSubmit();
+
+  registerSubmit(data,(err)=>{
+    if (err){
+      alert('Username taken.')
+    }
+  })
 };
-
-const registerSubmit = () => {
-  let firstName = document.forms['register-form']['firstname'].value;
-  let lastName = document.forms['register-form']['lastname'].value;
-  let userName = document.forms['register-form']['username'].value;
-  let password = document.forms['register-form']['password1'].value;
-
-  const data = JSON.stringify({
-    firstname: firstName,
-    lastname: lastName,
-    username: userName,
-    password: password
-  });
+const registerSubmit = (data) => {
 
   const settings = {
     method: 'POST',
@@ -65,5 +65,8 @@ const registerSubmit = () => {
   fetch('./register', settings)
       .then((response) => {
         return response.json();
+  }).then((json) =>{
+    hideLogReg();
+    showLogout();
   })
 };

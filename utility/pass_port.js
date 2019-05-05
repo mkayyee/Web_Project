@@ -2,6 +2,7 @@ const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const databaseAccess = require('./database_access');
+const loginJS = require('../public/js/login');
 
 //Implement strategy for passport
 passport.use(new Strategy(
@@ -61,7 +62,15 @@ const register = (req, res, next) => {
   const saltRounds = 12;
   bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
     //console.log(hash);
-    databaseAccess.checkUser([req.body.firstname, req.body.lastname, req.body.username, hash] ,next);
+    databaseAccess.findByUser(req.body.username, (err,res)=>{
+      if (res.length > 0){
+        // haven't figured out yet how to turn this into an alert...
+        console.log('Username taken')
+      }
+      else{
+        databaseAccess.registerUser([req.body.firstname, req.body.lastname, req.body.username, hash] ,next);
+      }
+    });
   });
 };
 

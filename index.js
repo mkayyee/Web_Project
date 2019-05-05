@@ -24,7 +24,7 @@ app.use(express.static('public'));
 
 app.use('/modules', express.static('node_modules'));
 
-app.post('/register', pass_port.register);
+app.post('/register', pass_port.register, pass_port.log);
 
 app.post('/login', pass_port.log);
 app.listen(3000);

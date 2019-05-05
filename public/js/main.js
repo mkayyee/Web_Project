@@ -41,6 +41,8 @@ loginClose.addEventListener("click", () => {
 const hideLogReg = () => {
   regButton.style.display = 'none';
   loginButton.style.display = "none";
+  loginForm.style.display = 'none';
+  regForm.style.display = 'none';
 };
 
 const showLogout = () => {

@@ -1,5 +1,4 @@
 'use strict';
-
 const loginValid = (event) => {
 
   let userName = document.forms['login-form']['username'].value;
@@ -38,10 +37,10 @@ const loginSubmit = () => {
 
   fetch('./login', settings)
   .then((response) => {
-    console.log(1);
     return response.json();
   }).then((json) => {
     hideLogReg();
     showLogout();
   });
 };
+
