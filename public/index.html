@@ -5,63 +5,79 @@
     <title>Title</title>
     <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+          integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 </head>
 <body>
 
 <ul class="register-login">
-    <li><button id="reg-button">Register</button></li>
-    <li><button id="login-button">Log In</button></li>
-    <li><button id="logout">Logout</button></li>
-    <li><img id="profile-pic" src="https://img.icons8.com/dotty/2x/user.png"></li>
-    <li id="user"></li>
+    <li>
+        <button id="reg-button">Register</button>
+    </li>
+    <li>
+        <button id="login-button">Log In</button>
+    </li>
+    <li id="profile-dropdown"><p id="user"></p><img id="profile-pic" src="https://img.icons8.com/dotty/2x/user.png">
+    </li>
 
 </ul>
 
-<div class="form-div" id="login-form">
-    <form method="POST" name="login-form" novalidate onsubmit="return loginValid(event)">
-        <label>Username: <input type="text" name="username" required>
-        </label>
-        <br>
-        <label>Password: <input type="password" name="password" required>
-        </label>
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
-    <button id="login-close">Close</button>
-</div>
+<ul id="profile-menu">
+    <li><a href="profile.html">
+        <button>Profile</button>
+    </a></li>
+    <li>
+        <button id="logout">Logout</button>
+    </li>
+    <li>
+        <button id="close-profile">Close</button>
+    </li>
+</ul>
+<div class="log-reg-form">
 
-<div class="form-div" id="register-form">
-    <form method="POST" name="register-form" onsubmit="return registerValid(event)">
-        <label>First name: <input type="text" name="firstname">
-        </label>
-        <br>
-        <label>Last name: <input type="text" name="lastname">
-        </label>
-        <br>
-        <label>Username: <input type="text" name="username">
-        </label>
-        <br>
-        <label>Birthday: <input type="date" name="birthday"></label>
-        <br>
-        <label>Location: <input type="text" name="location"></label>
-        <br>
-        <label>Password: <input type="password" name="password1">
-        </label>
-        <br>
-        <label>Repeat password: <input type="password" name="password2">
-        </label>
-        <br><br>
-        <input type="submit" value="Register">
-    </form>
-    <button id="register-close">Close</button>
-</div>
+    <div class="form-div" id="login-form">
+        <form method="POST" name="login-form" novalidate onsubmit="return loginValid(event)">
+            <label>Username: <input type="text" name="username" required autofocus>
+            </label>
+            <br>
+            <label>Password: <input type="password" name="password" required>
+            </label>
+            <br><br>
+            <input type="submit" value="Login">
+        </form>
+        <button id="login-close">Close</button>
+    </div>
 
+    <div class="form-div" id="register-form">
+        <form method="POST" name="register-form" onsubmit="return registerValid(event)">
+            <label>First name: <input type="text" name="firstname" autofocus>
+            </label>
+            <br>
+            <label>Last name: <input type="text" name="lastname">
+            </label>
+            <br>
+            <label>Username: <input type="text" name="username">
+            </label>
+            <br>
+            <label>Birthday: <input type="date" name="birthday"></label>
+            <br>
+            <label>Location: <input type="text" name="location"></label>
+            <br>
+            <label>Password: <input type="password" name="password1">
+            </label>
+            <br>
+            <label>Repeat password: <input type="password" name="password2">
+            </label>
+            <br><br>
+            <input type="submit" value="Register">
+        </form>
+        <button id="register-close">Close</button>
+    </div>
+</div>
 <div class="upload-div">
-    <h3>Upload Media</h3>
     <form id="upload-form">
         <label><input type="text" name="title" placeholder="title"></label>
-        <label class="button">Select Media
+        <label class="button">
             <input type="file" name="my-image" accept="image/*,video/*">
         </label>
         <button type="submit">Upload</button>
@@ -69,7 +85,7 @@
 </div>
 
 <div id="global-feed">
-<!-- Global feed elements load here -->
+    <!-- Global feed elements load here -->
 </div>
 <script src="js/main.js"></script>
 <script src="js/global_feed.js"></script>

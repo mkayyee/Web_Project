@@ -79,6 +79,5 @@ const registerSubmit = (data,username) => {
         return response.json();
   }).then((json) =>{
     hideLogReg(username);
-    showLogout();
   })
 };

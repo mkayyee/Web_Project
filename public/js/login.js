@@ -40,7 +40,6 @@ const loginSubmit = () => {
     return response.json();
   }).then((json) => {
     hideLogReg(userName);
-    showLogout();
   });
 };
 

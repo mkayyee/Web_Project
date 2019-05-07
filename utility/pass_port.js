@@ -40,6 +40,7 @@ const log = (req, res, next) => {
     if (!user) { return res.sendStatus(403);}
     req.logIn(user, (err) => {
       if (err) {return next(err);}
+      console.log(user);
       return res.send(req.user);
     });
   })(req, res, next);

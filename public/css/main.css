@@ -1,11 +1,16 @@
 * {
     margin: 0;
     padding: 0;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+button{
+    cursor: pointer;
 }
 
 body {
     margin: 0;
-    background-color: salmon;
+    background-color: #FFE7BA;
     min-width: 300px;
 }
 
@@ -15,32 +20,33 @@ ul {
 }
 
 .register-login {
+    height: fit-content;
     position: fixed;
-    margin: 0;
-    padding: 0;
     top: 0;
     overflow: hidden;
-    background-color: cadetblue;
+    background-color: #835C21;
 }
 
 .register-login li {
+    display: inline-flex;
     float: right;
 }
 
 .register-login button {
+    width: 100px;
+    color: #FFE7BA;
+    padding: 5px;
     display: flex;
-    width: 70px;
-    color: black;
     text-decoration: none;
     text-align: center;
-    height: 40px;
+    height: 48px;
     align-items: center;
-    background: cadetblue;
+    background: #835C21;
     border: none;
 }
 
 .register-login li button:hover {
-    background-color: darkcyan;
+    background-color: #F7B649;
 }
 
 #global-feed {
@@ -123,26 +129,12 @@ ul {
     width: 100%;
     height: 40px;
 }
-#register-form{
-    visibility: hidden;
-    background-color: white;
-    border: 1px solid black;
-}
-#login-form{
-
-    visibility: hidden;
-    background-color: white;
-    border: 1px solid black;
-}
-.form-div{
-    height: 100%;
-    width: 100%;
-    alignment: center;
-    position: fixed;
-}
 #user{
-    visibility: hidden;
+    font-size: 30px;
+    margin-right: 20px;
+
 }
+
 #profile-pic{
     visibility: hidden;
     height: 40px;
@@ -150,7 +142,102 @@ ul {
 
 }
 .upload-div{
+    padding: 0;
+    margin: 50px;
+    display: block;
+    height: fit-content;
 }
 #upload-form{
-    margin: 50px;
+    display: inline;
+    width: 75%;
+    min-width: 200px;
+    height: fit-content;
+}
+
+#profile-dropdown{
+    color: #2C1704;
+    width: 200px;
+    background-color: #F7B649;
+    border: 2px solid #FF9C09;
+    padding: 2px;
+    height: fit-content;
+
+    visibility: hidden;
+    cursor: pointer;
+}
+#profile-dropdown:hover{
+    background-color: #FFE7BA;
+}
+#profile-menu{
+    float: right;
+    visibility: hidden;
+    color: #FFE7BA;
+    background-color: #FF9C09;
+    margin-right: 0;
+    width: 200px;
+    height: fit-content;
+
+}
+#profile-menu a{
+    color: #FFE7BA;
+    background-color: #FF9C09;
+    text-decoration: none;
+}
+#profile-menu li{
+    width: 100%;
+}
+.form-div{
+    position: fixed;
+}
+#register-form{
+    color: #835C21;
+    height: fit-content;
+    width: 350px;
+    right: 0;
+    visibility: hidden;
+    background-color: #F7B649;
+}
+.log-reg-form{
+    height: fit-content;
+    width: fit-content;
+    float: right;
+}
+#login-form{
+    right: 0;
+    color: #835C21;
+    height: fit-content;
+    width: 200px;
+    visibility: hidden;
+    background-color: #F7B649;
+}
+
+
+#register-form button, #login-form button, #profile-menu button{
+    color: #F7B649;
+    background-color: #FF9C09;
+    width: 100%;
+}
+#register-form button:hover, #login-form button:hover, #profile-menu button:hover{
+    color: #2C1704;
+    background-color: #FFE7BA;
+}
+#register-form input, #login-form input, #profile-menu input{
+    color: #2C1704;
+    background-color: #FFE7BA;
+    width: 80%;
+}
+#register-form input[type=submit] , #login-form input[type=submit], #profile-menu input[type=submit]{
+    color: #F7B649;
+    background-color: #FF9C09;
+    width: 100%;
+}
+#register-form input[type=submit]:hover , #login-form input[type=submit]:hover, #profile-menu input[type=submit]:hover{
+    color: #2C1704;
+    background-color: #FFE7BA;
+    cursor: pointer;
+
+
+}
+@media only screen and (min-width: 1100px) {
+
 }

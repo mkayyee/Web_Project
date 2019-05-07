@@ -35,15 +35,17 @@ app.post('/image', pass_port.isLogged, upload.single('my-image'),
 app.use('/image', (req, res, next) => {
     // lisää kuvan tiedot tietokantaan
     console.log(req);
-    console.log('user id ========= ' + req.user.id);
+    console.log('user id ========= ' + userID);
     const data = [
         //req.user.id, <---- need to get this to work
+        req.user.id,
         req.body.title,
         'uploads/' + req.file.filename,
         // from passport (database column is uID)
     ];
     database_access.insert(data, res);
 });
+app.get('/profile',(req,res) => { res.sendfile('public/profile.html')});
 
 app.post('/register', pass_port.register, pass_port.log);
 
