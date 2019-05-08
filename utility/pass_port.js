@@ -2,30 +2,21 @@ const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const databaseAccess = require('./database_access');
-const loginJS = require('../public/js/login');
 
 //Implement strategy for passport
 passport.use(new Strategy(
     (req, res, cb) => {
       databaseAccess.findByUser(req, (err, user) => {
-        //console.log(err);
-        //console.log(user);
         if (err) {
-          //console.log('11 err = ' + err);
           return cb(err); }
         if (user.length < 1) {
-          //console.log('22');
           return cb(null, false); }
-        //console.log(res + ' ' + user[0].password);
         bcrypt.compare(res, user[0].password, (err, res) => {
-          //console.log('res = ' + res);
-          //console.log('err = '+ err);
           if(res) {
-            //console.log('1');
+            delete user[0].password;
             return cb(null, user[0]);
           }
           else {
-            //console.log("2");
             return cb(null, false);
           }
         });
@@ -36,11 +27,20 @@ passport.use(new Strategy(
 //From example "https://github.com/ilkkamtk/express-mysql-example/blob/master/utils/pass.js", to get return object to login fetch
 const log = (req, res, next) => {
   passport.authenticate('local', (err, user) => {
-    if (err) {return next(err);}
-    if (!user) { return res.sendStatus(403);}
+    if (err) {
+        return next(err);
+    }
+    if (!user) {
+        return res.sendStatus(403);
+    }
     req.logIn(user, (err) => {
-      if (err) {return next(err);}
-      console.log(user);
+      if (err) {
+          return next(err);
+      }
+      databaseAccess.getAge(user.username, (age) =>{
+        console.log(age)
+      });
+      console.log(`User ${user.username} has logged in`);
       return res.send(req.user);
     });
   })(req, res, next);
@@ -50,12 +50,9 @@ passport.serializeUser((user, cb) => {
   cb(null, user.username);
 });
 
-passport.deserializeUser((username, cb) => {
-  databaseAccess.findByUser(username, (err, user) => {
-    if(err) {
-      return cb(err);
-    }
-    cb(null, user);
+passport.deserializeUser((user, cb) => {
+  databaseAccess.findByUser(user, (err, user) => {
+    cb(err, user);
   });
 });
 
@@ -76,12 +73,12 @@ const register = (req, res, next) => {
 };
 
 const isLogged = (req, res, next) => {
-  if(req.user) {
+  console.log(req.user[0].id);
+  if(req.isAuthenticated()) {
     next();
   }
   else {
-    console.log(req.user);
-    console.log("Not logged");
+    res.sendStatus(403);
   }
 };
 

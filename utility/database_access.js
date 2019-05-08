@@ -1,6 +1,7 @@
 'use strict';
 const database = require('./database');
 
+
 const registerUser = (data, next) => {
     database.connect().execute(
         //Implement database insert
@@ -28,7 +29,7 @@ const findByUser = (username, cb) => {
 };
 const insert = (data, res) => {
     database.connect().execute(
-        'INSERT INTO Media (uploader_ID, title, link) VALUES (?,?,?);',
+        'INSERT INTO Media (uploader_ID, username, title, link) VALUES (?,?,?,?);',
         data,
         (err, results,) => {
             if (err == null) {
@@ -40,11 +41,6 @@ const insert = (data, res) => {
     );
 };
 
-module.exports = {
-    registerUser: registerUser,
-    findByUser: findByUser,
-    insert: insert,
-};
 
 const getAge = (username, cb) => {
     findByUser(username, (err, res) => {
@@ -67,6 +63,30 @@ const getAge = (username, cb) => {
             cb(err)
         }
     })
+};
+const getImages = (cb) =>{
+    database.connect().query('select * from Media where VET IS NULL and user_pic=0;',
+        null,(err,results)=>{
+        if(err === null){
+            cb.send(results)
+        }
+        else{console.log(err)}
+        });
+
+};
+    //result.forEach(() =>{globalFeed.articleContent(result[0].ID,result[0].vst,result[0].link,result[0].title);
+
+
+
+
+
+
+module.exports = {
+    registerUser: registerUser,
+    findByUser: findByUser,
+    insert: insert,
+    getAge: getAge,
+    getImages: getImages,
 };
 
 
