@@ -80,7 +80,8 @@ const getMedia = (cb) =>{
     database.connect().query('select * from Media where VET IS NULL and user_pic=0;',
         null,(err,results)=>{
         if(err === null){
-            cb.send(results)
+            cb.send(results);
+
         }
         else{console.log(err)}
         });
