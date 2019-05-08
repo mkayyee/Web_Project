@@ -145,7 +145,7 @@ ul {
     padding: 0;
     margin: 50px 10% -35px;
     display: block;
-    height: fit-content;
+    height: 100px;
     width: 80%;
     border: 2px solid #835C21;
     background-color: #F7B649;
@@ -154,7 +154,8 @@ ul {
     display: inline;
     height: fit-content;
 }
-#upload-form input, #upload-form button , #upload-form h3, #upload-form input[type=button]{
+#upload-form input, #upload-form button , #upload-form h3, #upload-form input[type=button],
+#upload-video input, #upload-video button, #upload-video h3 #upload-video input[type=button]{
     font-size: 16px;
     color: #2C1704;
     width: 25%;

@@ -31,22 +31,36 @@ app.post('/image', pass_port.isLogged, upload.single('my-image'),
     (req, res, next) => {
         next();
     });
+app.post('/video', pass_port.isLogged, upload.single('my-video'),
+    (req, res, next) => {
+        next();
+    });
 
 app.get('/all',(req, res)=>{
-    database_access.getImages(res);
+    database_access.getMedia(res);
 });
 
 app.use('/image', (req, res, next) => {
-    // lisää kuvan tiedot tietokantaan
     const data = [
+        0,
         req.user[0].id,
         req.user[0].username,
         req.body.title,
         'uploads/' + req.file.filename,
-        // from passport (database column is uID)
     ];
-    database_access.insert(data, res);
+    database_access.insertImg(data, res);
 });
+app.use('/video', (req, res, next) => {
+    const data = [
+        1,
+        req.user[0].id,
+        req.user[0].username,
+        req.body.title,
+        'uploads/' + req.file.filename,
+    ];
+    database_access.insertVideo(data, res);
+});
+
 app.post('/register', pass_port.register, pass_port.log);
 
 app.post('/login', pass_port.log);

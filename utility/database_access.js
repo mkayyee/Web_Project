@@ -27,9 +27,9 @@ const findByUser = (username, cb) => {
         },
     );
 };
-const insert = (data, res) => {
+const insertImg = (data, res) => {
     database.connect().execute(
-        'INSERT INTO Media (uploader_ID, username, title, link) VALUES (?,?,?,?);',
+        'INSERT INTO Media (i_or_v, uploader_ID, username, title, link) VALUES (?,?,?,?,?);',
         data,
         (err, results,) => {
             if (err == null) {
@@ -40,7 +40,19 @@ const insert = (data, res) => {
         },
     );
 };
-
+const insertVideo = (data, res) => {
+    database.connect().execute(
+        'INSERT INTO Media (i_or_v, uploader_ID, username, title, link) VALUES (?,?,?,?,?);',
+        data,
+        (err, results,) => {
+            if (err == null) {
+                res.send(results);
+            } else {
+                console.log(err);
+            }
+        },
+    );
+};
 
 const getAge = (username, cb) => {
     findByUser(username, (err, res) => {
@@ -64,7 +76,7 @@ const getAge = (username, cb) => {
         }
     })
 };
-const getImages = (cb) =>{
+const getMedia = (cb) =>{
     database.connect().query('select * from Media where VET IS NULL and user_pic=0;',
         null,(err,results)=>{
         if(err === null){
@@ -84,9 +96,10 @@ const getImages = (cb) =>{
 module.exports = {
     registerUser: registerUser,
     findByUser: findByUser,
-    insert: insert,
+    insertImg: insertImg,
+    insertVideo: insertVideo,
     getAge: getAge,
-    getImages: getImages,
+    getMedia: getMedia,
 };
 
 

@@ -22,10 +22,9 @@ regButton.addEventListener("click", () => {
     if (loginForm.style.visibility === 'visible') {
         loginForm.style.visibility = 'hidden';
     }
-    if(regForm.style.visibility === 'visible'){
+    if (regForm.style.visibility === 'visible') {
         regForm.style.visibility = 'hidden';
-    }
-    else {
+    } else {
         regForm.style.visibility = 'visible'
     }
 });
@@ -40,10 +39,9 @@ loginButton.addEventListener("click", () => {
     if (regForm.style.visibility === 'visible') {
         regForm.style.visibility = 'hidden';
     }
-    if(loginForm.style.visibility === 'visible'){
+    if (loginForm.style.visibility === 'visible') {
         loginForm.style.visibility = 'hidden';
-    }
-    else {
+    } else {
         loginForm.style.visibility = 'visible'
     }
 });
@@ -72,11 +70,11 @@ const logOut = () => {
 
 logOutBtn.addEventListener('click', logOut);
 
-const frm = document.querySelector('#upload-form');
+const imgForm = document.querySelector('#upload-form');
 
-const sendForm = (evt) => {
+const sendImageForm = (evt) => {
     evt.preventDefault();
-    const fd = new FormData(frm);
+    const fd = new FormData(imgForm);
     const settings = {
         method: 'post',
         body: fd,
@@ -86,10 +84,34 @@ const sendForm = (evt) => {
         return response.json();
     }).then((json) => {
         console.log(json);
-        frm.reset();
+        imgForm.reset();
+        getData();
     });
+
 };
-frm.addEventListener('submit', sendForm);
+imgForm.addEventListener('submit', sendImageForm);
+
+
+const vidForm = document.querySelector('#upload-video');
+
+const sendVideoForm = (evt) => {
+    evt.preventDefault();
+    const fd = new FormData(vidForm);
+    const settings = {
+        method: 'post',
+        body: fd,
+    };
+
+    fetch('./video', settings).then((response) => {
+        return response.json();
+    }).then((json) => {
+        console.log(json);
+        vidForm.reset();
+        getData();
+    });
+
+};
+vidForm.addEventListener('submit', sendVideoForm);
 
 
 profileDrop.addEventListener('click', () => {
@@ -103,18 +125,23 @@ profileClose.addEventListener('click', () => {
     profileMenu.style.visibility = 'hidden'
 });
 
-closeForms.addEventListener('click', () =>{
+closeForms.addEventListener('click', () => {
     regForm.style.visibility = 'hidden';
     loginForm.style.visibility = 'hidden';
     profileMenu.style.visibility = 'hidden';
 });
 
-const articleContent = (user, date, image, title) => {
-    let html = `
+const articleContent = (user, date, media, title, format) => {
+    if (format === 0) {   // if image -> send form with an <img>
+        return `
 
-<article class="feed-box"><div id="feed-bar"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Blue_Question.svg/128px-Blue_Question.svg.png"><p>${user}<p><div id="bar-right"> <p>${date}</p></div><div id="dropdown-menu"><button id="menu-button" ><i class="fas" class="fa-angle-down"></i></button></div> </div><div id="feed-top-bar"><img src="${image}"><header>${title}</header> </div></article>`;
+<article class="feed-box"><div id="feed-bar"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Blue_Question.svg/128px-Blue_Question.svg.png"><p>${user}<p><div id="feed-right"> <p>${date}</p><div id="dropdown-menu"><button id="menu-button" onclick = menuFunction()><i class="fas" class="fa-angle-down"></i></button></div></div></div><img src="${media}"><header>${title}</header></article>`;
 
-    return html;
+    } else {   // if not -> send form with a <video> tag
+        return `
+
+<article class="feed-box"><div id="feed-bar"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Blue_Question.svg/128px-Blue_Question.svg.png"><p>${user}<p><div id="feed-right"> <p>${date}</p><div id="dropdown-menu"><button id="menu-button" onclick = menuFunction()><i class="fas" class="fa-angle-down"></i></button></div></div></div><video src="${media}" onclick="this.play()" controls="controls"></video><header>${title}</header></article>`;
+    }
 };
 
 const getData = () => {
@@ -136,10 +163,14 @@ const updateView = (items) => {
     for (let item of items) {
         const article = document.createElement('article');
         // call createArticle to add html content to article
-        article.innerHTML = articleContent(item.username, item.vst, item.link, item.title);
+        article.innerHTML = articleContent(item.username, item.vst, item.link, item.title, item.i_or_v);
         // add article to view
         document.querySelector('#global-feed').appendChild(article);
     }
 };
 getData();
+
+const menuFunction = () => {
+    document.getElementById('button-modal').style.display = 'block';
+};
 
