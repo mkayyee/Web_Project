@@ -135,7 +135,7 @@ const articleContent = (user, date, media, title, format) => {
     if (format === 0) {   // if image -> send form with an <img>
         return `
 
-<article class="feed-box"><div id="feed-bar"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Blue_Question.svg/128px-Blue_Question.svg.png"><p>${user}<p><div id="feed-right"> <p>${date}</p><div id="dropdown-menu"><button id="menu-button" onclick = menuFunction()><i class="fas" class="fa-angle-down"></i></button></div></div></div><img src="${media}"><header>${title}</header></article>`;
+<article class="feed-box"><div id="feed-bar"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Blue_Question.svg/128px-Blue_Question.svg.png"><p>${user}<p><div id="feed-right"> <p>${date}</p><div id="dropdown-menu"><button id="menu-button" onclick = menuFunction()><i class="fas" class="fa-angle-down"></i></button></div></div></div><img src="${media}"><header>${title}</header><div class="modal" id="button-modal'></div class="modal-inner"><button>Comment</button><button>Like</button></div></div></article>`;
 
     } else {   // if not -> send form with a <video> tag
         return `
@@ -169,6 +169,7 @@ const updateView = (items) => {
     }
 };
 getData();
+
 
 const menuFunction = () => {
     document.getElementById('button-modal').style.display = 'block';

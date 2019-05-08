@@ -139,8 +139,8 @@ ul {
     visibility: hidden;
     height: 40px;
     width: auto;
-
 }
+
 .upload-div{
     padding: 0;
     margin: 50px 10% -35px;
@@ -178,20 +178,17 @@ ul {
 #profile-menu{
     float: right;
     visibility: hidden;
-    color: #FFE7BA;
-    background-color: #FF9C09;
     margin-right: 0;
     width: 200px;
     height: fit-content;
 
 }
-#profile-menu a{
-    color: #FFE7BA;
-    background-color: #FF9C09;
-    text-decoration: none;
+#profile-menu-list{
+    height: fit-content;
+    position: fixed;
 }
-#profile-menu li{
-    width: 100%;
+#profile-menu-list a{
+    text-decoration: none;
 }
 .form-div{
     position: fixed;
@@ -219,31 +216,30 @@ ul {
 }
 
 
-#register-form button, #login-form button, #profile-menu button{
+#register-form button, #login-form button, .button-menu-style,#register-form input[type=submit] , #login-form input[type=submit]{
     color: #F7B649;
     background-color: #FF9C09;
     width: 100%;
 }
-#register-form button:hover, #login-form button:hover, #profile-menu button:hover{
+
+#register-form button:hover, #login-form button:hover,.button-menu-style:hover{
     color: #2C1704;
     background-color: #FFE7BA;
 }
-#register-form input, #login-form input, #profile-menu input{
+#register-form input, #login-form input{
     color: #2C1704;
     background-color: #FFE7BA;
     width: 80%;
 }
-#register-form input[type=submit] , #login-form input[type=submit], #profile-menu input[type=submit]{
-    color: #F7B649;
-    background-color: #FF9C09;
-    width: 100%;
-}
-#register-form input[type=submit]:hover , #login-form input[type=submit]:hover, #profile-menu input[type=submit]:hover{
+#register-form input[type=submit]:hover , #login-form input[type=submit]:hover{
     color: #2C1704;
     background-color: #FFE7BA;
     cursor: pointer;
 
 
+}
+.button-menu-style{
+    width: 200px;
 }
 @media only screen and (max-width: 420px) {
     .register-login{

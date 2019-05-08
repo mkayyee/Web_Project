@@ -21,18 +21,19 @@
     </li>
 
 </ul>
-
-<ul id="profile-menu">
-    <li><a href="profile.html">
-        <button>Profile</button>
-    </a></li>
-    <li>
-        <button id="logout">Logout</button>
-    </li>
-    <li>
-        <button id="close-profile">Close</button>
-    </li>
-</ul>
+<div id="profile-menu">
+    <ul id="profile-menu-list">
+        <li><a href="profile.html">
+            <button class="button-menu-style">Profile</button>
+        </a></li>
+        <li>
+            <button id="logout" class="button-menu-style">Logout</button>
+        </li>
+        <li>
+            <button id="close-profile" class="button-menu-style">Close</button>
+        </li>
+    </ul>
+</div>
 <div class="log-reg-form">
 
     <div class="form-div" id="login-form">
@@ -76,28 +77,28 @@
 </div>
 
 <div class="close-forms">
-<div class="upload-div">
-    <form id="upload-form">
-        <span>Upload Picture</span>
-        <label><input type="text" name="title" placeholder="title"></label>
-        <label class="button">
-            <input type="file" name="my-image" accept="image/*">
-        </label>
-        <button type="submit">Upload</button>
-    </form>
-    <br>
-    <form id="upload-video">
-        <span>Upload Video</span>
-        <label><input type="text" name="title" placeholder="title"></label>
-        <label class="button">
-            <input type="file" name="my-video" accept="video/*">
-        </label>
-        <button type="submit">Upload</button>
-    </form>
-</div>
+    <div class="upload-div">
+        <form id="upload-form">
+            <span>Upload Picture</span>
+            <label><input type="text" name="title" placeholder="title"></label>
+            <label class="button">
+                <input type="file" name="my-image" accept="image/*">
+            </label>
+            <button type="submit">Upload</button>
+        </form>
+        <br>
+        <form id="upload-video">
+            <span>Upload Video</span>
+            <label><input type="text" name="title" placeholder="title"></label>
+            <label class="button">
+                <input type="file" name="my-video" accept="video/*">
+            </label>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
 
-<div id="global-feed">
-</div>
+    <div id="global-feed">
+    </div>
 
 </div>
 

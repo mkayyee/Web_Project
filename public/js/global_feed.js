@@ -3,12 +3,7 @@
 //To-do: create feed element according to specifications and load
 //the correct data.
 
-const updateFeed = (user, date, image, title) => {
-    let article = document.createElement('article');
-    article = articleContent(user, date, image, title);
-    document.getElementById('global-feed').appendChild(article);
 
-};
 const addModal = () => {
     //Modal menu
     const modal = document.createElement('div');
@@ -38,6 +33,6 @@ window.onclick = (event) => {
     }
 };
 
-updateFeed();
+
 addModal();
 
