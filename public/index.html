@@ -18,6 +18,7 @@
         <button id="login-button">Log In</button>
     </li>
     <li id="profile-dropdown"><p id="user"></p><img id="profile-pic" src="https://img.icons8.com/dotty/2x/user.png">
+        <p>☰</p>
     </li>
 
 </ul>
@@ -25,7 +26,11 @@
     <ul id="profile-menu-list">
         <li><a href="profile.html">
             <button class="button-menu-style">Profile</button>
-        </a></li>
+        </a>
+        </li>
+        <li>
+            <button class="button-menu-style" id="change-profile-pic">Change Picture</button>
+        </li>
         <li>
             <button id="logout" class="button-menu-style">Logout</button>
         </li>
@@ -35,7 +40,6 @@
     </ul>
 </div>
 <div class="log-reg-form">
-
     <div class="form-div" id="login-form">
         <form method="POST" name="login-form" novalidate onsubmit="return loginValid(event)">
             <label>Username: <input type="text" name="username" required autofocus>
@@ -48,7 +52,6 @@
         </form>
         <button id="login-close">Close</button>
     </div>
-
     <div class="form-div" id="register-form">
         <form method="POST" name="register-form" onsubmit="return registerValid(event)">
             <label>First name: <input type="text" name="firstname" autofocus>
@@ -73,6 +76,15 @@
             <input type="submit" value="Register">
         </form>
         <button id="register-close">Close</button>
+    </div>
+    <div class="form-div" id="profile-pic-form-visible">
+        <form id="profile-pic-form">
+            <label class="button">
+                <input type="file" name="profile-image" accept="image/*">
+            </label>
+            <button type="submit">Ok</button>
+        </form>
+        <button id="profile-pic-close">Close</button>
     </div>
 </div>
 
@@ -103,7 +115,6 @@
 </div>
 
 <script src="js/main.js"></script>
-<script src="js/global_feed.js"></script>
 <script src="js/profile.js"></script>
 <script src="js/login.js"></script>
 <script src="js/register.js"></script>

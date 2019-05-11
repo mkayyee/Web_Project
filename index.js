@@ -27,18 +27,24 @@ app.use(express.static('public'));
 
 app.use('/modules', express.static('node_modules'));
 
+app.post('/comment',(req,res,next)=>{
+    console.log(req);
+    const data = [
+        req.user[0].username,
+        req.user[0].id,
+        req.body.id,
+        req.body.message,
+    ];
+    database_access.addComment(data)
+});
+app.post('/comments',(req,res) =>{
+    database_access.getComments(req.body.id,res);
+});
+
 app.post('/image', pass_port.isLogged, upload.single('my-image'),
     (req, res, next) => {
         next();
     });
-app.post('/video', pass_port.isLogged, upload.single('my-video'),
-    (req, res, next) => {
-        next();
-    });
-
-app.get('/all',(req, res)=>{
-    database_access.getMedia(res);
-});
 
 app.use('/image', (req, res, next) => {
     const data = [
@@ -50,6 +56,11 @@ app.use('/image', (req, res, next) => {
     ];
     database_access.insertImg(data, res);
 });
+
+app.post('/video', pass_port.isLogged, upload.single('my-video'),
+    (req, res, next) => {
+        next();
+    });
 app.use('/video', (req, res, next) => {
     const data = [
         1,
@@ -60,9 +71,32 @@ app.use('/video', (req, res, next) => {
     ];
     database_access.insertVideo(data, res);
 });
+app.post('/profilePic', pass_port.isLogged, upload.single('profile-image'),
+    (req, res, next) => {
+        next();
+    });
+
+app.use('/profilePic', (req, res, next) => {
+    const data = [
+        0,
+        req.user[0].id,
+        req.user[0].username,
+        'Profile Picture',
+        'uploads/' + req.file.filename,
+        1,
+    ];
+    database_access.insertUserImg(data, res);
+});
+
+
+app.get('/all',(req, res)=>{
+    database_access.getMedia(res);
+});
 
 app.post('/register', pass_port.register, pass_port.log);
 
 app.post('/login', pass_port.log);
+
+
 
 app.listen(3000);

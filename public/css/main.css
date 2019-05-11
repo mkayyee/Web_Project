@@ -3,6 +3,7 @@
     padding: 0;
     font-size: 20px;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 button{
     cursor: pointer;
@@ -83,11 +84,10 @@ ul {
     margin-left: 10%;
     margin-top: 2px;
 }
-
 .feed-box {
     padding: 6px;
-    border-style: groove;
-    margin-top: 40px;
+    border: 1px solid #835C21;
+    margin-top: 60px;
     font-size: 14px;
 }
 
@@ -135,13 +135,49 @@ ul {
     width: 100%;
     height: 100%;
 }
+article{
 
-.modal-inner {
-    position: fixed;
-    bottom: 0;
-    background-color: #68cc3f;
-    width: 100%;
-    height: 40px;
+}
+.menu-button{
+
+}
+.comment-div{
+    height: fit-content;
+}
+.comment-window{
+    padding: 2px;
+    width: 50%;
+    margin: 10px auto 0;
+    text-align: left;
+}
+.sender{
+    margin: 2px;
+    color: #2C1704;
+}
+.show-comments{
+
+}
+.comment{
+}
+.comment-box{
+    margin: 2px;
+    background-color: #F7B649;
+    width: fit-content;
+}
+.comment-send{
+    margin-top: 10px;
+    height: 100%;
+    width: auto;
+    color: #FFE7BA;
+    background-color: #835C21;
+}
+.comment-send:hover{
+    color: #2C1704;
+    background-color: #F7B649;
+    border-color: #2C1704;
+}
+.comment-form{
+    display: none;
 }
 #user{
     font-size: 30px;
@@ -159,7 +195,7 @@ ul {
     display: none;
     padding: 0;
     margin: 50px 10% -35px;
-    height: 100px;
+    height: fit-content;
     width: 80%;
     border: 2px solid #835C21;
     background-color: #F7B649;
@@ -177,7 +213,7 @@ ul {
 
 #profile-dropdown{
     color: #2C1704;
-    width: 200px;
+    width: 210px;
     background-color: #F7B649;
     border: 2px solid #FF9C09;
     padding: 2px;
@@ -193,7 +229,7 @@ ul {
     float: right;
     visibility: hidden;
     margin-right: 0;
-    width: 200px;
+    width: 210px;
     height: fit-content;
 
 }
@@ -208,6 +244,17 @@ ul {
     position: fixed;
 }
 #register-form{
+    color: #835C21;
+    height: fit-content;
+    width: 350px;
+    right: 0;
+    visibility: hidden;
+    background-color: #F7B649;
+}
+#profile-pic-form{
+
+}
+#profile-pic-form-visible{
     color: #835C21;
     height: fit-content;
     width: 350px;

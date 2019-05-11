@@ -40,6 +40,43 @@ const insertImg = (data, res) => {
         },
     );
 };
+
+const insertUserImg = (data, res) => {
+    database.connect().execute(
+        'INSERT INTO Media (i_or_v, uploader_ID, username, title, link, user_pic) VALUES (?,?,?,?,?,?);',
+        data,
+        (err, results,) => {
+            if (err === null) {
+                changeUserImg(data[1], data[4]);
+                res.send(results);
+            } else {
+                console.log(err);
+            }
+        },
+    );
+};
+const changeUserImg = (id, link) => {
+    // Date conversion into sql date
+    let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    database.connect().execute(
+        `select * from Media where uploader_ID =${id} and VET IS NULL`,
+        null, (err, results) => {
+            if (err === null) {
+                if (results.length > 1) {
+                    database.connect().execute(
+                        `update Media set VET="${date}" where ID =${results[0].ID};`,
+                        null,(err,res)=>{
+                            if(err === null){
+                                database.connect().execute(`update Users set profile_pic="${link}" where ID=${id};`,
+                                    null,(err,res)=>{});
+                            }
+                        }
+                    )
+                }
+            }
+        }
+    )
+};
 const insertVideo = (data, res) => {
     database.connect().execute(
         'INSERT INTO Media (i_or_v, uploader_ID, username, title, link) VALUES (?,?,?,?,?);',
@@ -70,28 +107,49 @@ const getAge = (username, cb) => {
                 }
             }
             cb(age);
-        }
-        else {
+        } else {
             cb(err)
         }
     })
 };
-const getMedia = (cb) =>{
-    database.connect().query('select * from Media where VET IS NULL and user_pic=0;',
-        null,(err,results)=>{
-        if(err === null){
-            cb.send(results);
 
-        }
-        else{console.log(err)}
+// query that returns all media inside the global feed - with the uploader's profile pic.
+const getMedia = (cb) => {
+    database.connect().query(`select distinct Media.*, Users.profile_pic from Media inner join Users where Media.VET is null and user_pic=0;`,
+        null, (err, results) => {
+            if (err === null) {
+                cb.send(results);
+
+            } else {
+                console.log(err)
+            }
         });
 
 };
-    //result.forEach(() =>{globalFeed.articleContent(result[0].ID,result[0].vst,result[0].link,result[0].title);
+// returns all messages - that haven't been removed - inside a post
+const getComments = (id, cb) => {
+    database.connect().query(`select * from Messages where VET IS NULL and media_ID=${id}; `,
+        null, (err, results) => {
+            if (err === null) {
+                cb.send(results);
+            } else {
+                console.log(err)
+            }
+        });
+};
 
-
-
-
+const addComment = (data) => {
+    console.log(data);
+    database.connect().execute(
+        'INSERT INTO Messages (sender,sender_ID,media_ID,content) VALUES (?,?,?,?);',
+        data,
+        (err, results,) => {
+            if (err === null) {
+                console.log('success!');
+            }
+        },
+    );
+};
 
 
 module.exports = {
@@ -101,6 +159,7 @@ module.exports = {
     insertVideo: insertVideo,
     getAge: getAge,
     getMedia: getMedia,
+    addComment: addComment,
+    getComments: getComments,
+    insertUserImg: insertUserImg,
 };
-
-
