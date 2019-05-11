@@ -59,10 +59,11 @@ const changeUserImg = (id, link) => {
     // Date conversion into sql date
     let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
     database.connect().execute(
-        `select * from Media where uploader_ID =${id} and VET IS NULL`,
+        `select * from Media where uploader_ID =${id} and VET IS NULL and user_pic = 1`,
         null, (err, results) => {
             if (err === null) {
                 if (results.length > 1) {
+                    console.log(results[0].ID);
                     database.connect().execute(
                         `update Media set VET="${date}" where ID =${results[0].ID};`,
                         null,(err,res)=>{
@@ -115,7 +116,7 @@ const getAge = (username, cb) => {
 
 // query that returns all media inside the global feed - with the uploader's profile pic.
 const getMedia = (cb) => {
-    database.connect().query(`select distinct Media.*, Users.profile_pic from Media inner join Users where Media.VET is null and user_pic=0;`,
+    database.connect().query(`select distinct Media.*, Users.profile_pic from Media inner join Users where Media.vet is null and user_pic=0 and Media.uploader_ID = Users.ID group by ID;`,
         null, (err, results) => {
             if (err === null) {
                 cb.send(results);
@@ -128,7 +129,7 @@ const getMedia = (cb) => {
 };
 // returns all messages - that haven't been removed - inside a post
 const getComments = (id, cb) => {
-    database.connect().query(`select * from Messages where VET IS NULL and media_ID=${id}; `,
+    database.connect().query(`select * from Messages where vet IS NULL and media_ID=${id}; `,
         null, (err, results) => {
             if (err === null) {
                 cb.send(results);

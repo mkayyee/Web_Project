@@ -166,7 +166,7 @@ const articleContent = (user, date, media, title, format, id, profile_pic) => {
 };
 
 const getData = () => {
-    let url = './all';
+    let url = './index';
     if (!all) {
         url = './my';
     }
@@ -174,7 +174,7 @@ const getData = () => {
         return response.json();
     }).then(items => {
         originalData = items;
-        updateView(items);
+        updateView(originalData);
     });
 
 };
@@ -186,7 +186,13 @@ const updateView = (items) => {
         // parses the post's date into a more readable form
         let date = `${media[0].vst.substring(0, 10)} at ${media[0].vst.substring(12, 19)}`;
         // checks if the uploader has a profile pic
-
+        console.log(`profile pic link:::::::::${media[0].profile_pic}`);
+        if(media[0].profile_pic === null){
+            profilePic = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Blue_Question.svg/128px-Blue_Question.svg.png";
+        }
+        else{
+            profilePic = media[0].profile_pic;
+        }
         const article = document.createElement('article');
         // call createArticle to add html content to article
         article.innerHTML = articleContent(item.username, date, item.link, item.title, item.i_or_v, item.ID, profilePic);

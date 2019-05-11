@@ -89,7 +89,7 @@ app.use('/profilePic', (req, res, next) => {
 });
 
 
-app.get('/all',(req, res)=>{
+app.get('/index',(req, res)=>{
     database_access.getMedia(res);
 });
 

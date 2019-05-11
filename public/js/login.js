@@ -19,6 +19,7 @@ const loginValid = (event) => {
 };
 
 const loginSubmit = () => {
+  let profilePic = document.querySelector('.profile-pic');
   let userName = document.forms['login-form']['username'].value;
   let password = document.forms['login-form']['password'].value;
 
