@@ -78,6 +78,6 @@ const registerSubmit = (data,username) => {
       .then((response) => {
         return response.json();
   }).then((json) =>{
-    hideLogReg(username);
+    getData();
   })
 };

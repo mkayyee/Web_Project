@@ -10,22 +10,48 @@
 </head>
 <body>
 
-<ul class="register-login">
-    <li>
-        <button id="reg-button">Register</button>
-    </li>
-    <li>
-        <button id="login-button">Log In</button>
-    </li>
-    <li id="profile-dropdown"><p id="user"></p><img id="profile-pic" src="https://img.icons8.com/dotty/2x/user.png">
-    </li>
+<div class="register-login">
 
-</ul>
+    <button class="upload-dropdown" style="display: none">Upload</button>
+    <ul>
+        <li>
+            <button id="reg-button">Register</button>
+        </li>
+        <li>
+            <button id="login-button">Log In</button>
+        </li>
+        <li id="profile-dropdown"><p id="user"></p><img id="profile-pic">
+        </li>
+    </ul>
+</div>
+<div class="pm-div">
+    <div class="form-div">
+        <form style="display: none" class="pm-form" method="post" name="pm-form" onsubmit="privateMsg(event)">
+            <div>
+                <p class="receiver"></p>
+            </div>
+            <label>
+                <input type="hidden" name="user_id" id="user_id">
+            </label>
+            <label>
+                <input style="width: 100%" type="text" name="message" id="message" required placeholder="write a message...">
+            </label>
+            <button type="submit">Send</button>
+            <button onclick="pmClose()">Close</button>
+        </form>
+    </div>
+</div>
+
+
 <div id="profile-menu">
     <ul id="profile-menu-list">
         <li><a href="profile.html">
             <button class="button-menu-style">Profile</button>
-        </a></li>
+        </a>
+        </li>
+        <li>
+            <button class="button-menu-style" id="change-profile-pic">Change Picture</button>
+        </li>
         <li>
             <button id="logout" class="button-menu-style">Logout</button>
         </li>
@@ -35,7 +61,6 @@
     </ul>
 </div>
 <div class="log-reg-form">
-
     <div class="form-div" id="login-form">
         <form method="POST" name="login-form" novalidate onsubmit="return loginValid(event)">
             <label>Username: <input type="text" name="username" required autofocus>
@@ -48,7 +73,6 @@
         </form>
         <button id="login-close">Close</button>
     </div>
-
     <div class="form-div" id="register-form">
         <form method="POST" name="register-form" onsubmit="return registerValid(event)">
             <label>First name: <input type="text" name="firstname" autofocus>
@@ -74,38 +98,59 @@
         </form>
         <button id="register-close">Close</button>
     </div>
+    <div class="form-div" id="profile-pic-form-visible">
+        <form id="profile-pic-form">
+            <label class="button">
+                <input type="file" name="profile-image" accept="image/*">
+            </label>
+            <button type="submit">Ok</button>
+        </form>
+        <button id="profile-pic-close">Close</button>
+    </div>
 </div>
 
-<div class="close-forms">
+<div>
     <div class="upload-div">
-        <form id="upload-form">
-            <span>Upload Picture</span>
-            <label><input type="text" name="title" placeholder="title"></label>
-            <label class="button">
-                <input type="file" name="my-image" accept="image/*">
-            </label>
-            <button type="submit">Upload</button>
-        </form>
-        <br>
-        <form id="upload-video">
-            <span>Upload Video</span>
-            <label><input type="text" name="title" placeholder="title"></label>
-            <label class="button">
-                <input type="file" name="my-video" accept="video/*">
-            </label>
-            <button type="submit">Upload</button>
-        </form>
+        <ul class="upload-list">
+            <li>
+                <button id="upload-pic">Picture</button>
+            </li>
+            <li>
+                <button id="upload-vid">Video</button>
+            </li>
+        </ul>
+
+
+        <div class="image-upload">
+            <form id="upload-form" style="display: none">
+                <label><input type="text" name="title" placeholder="title"></label>
+                <label class="button">
+                    <input type="file" name="my-image" accept="image/*">
+                </label>
+                <button type="submit">Upload Image</button>
+            </form>
+        </div>
+        <div class="video-upload">
+            <form id="upload-video" style="display: none">
+                <label><input type="text" name="title" placeholder="title"></label>
+                <label class="button">
+                    <input type="file" name="my-video" accept="video/*">
+                </label>
+                <button type="submit">Upload Video</button>
+            </form>
+        </div>
+
     </div>
 
-    <div id="global-feed">
+    <div id="global-feed" class="close-forms">
     </div>
 
 </div>
 
 <script src="js/main.js"></script>
-<script src="js/global_feed.js"></script>
 <script src="js/profile.js"></script>
 <script src="js/login.js"></script>
 <script src="js/register.js"></script>
+<script src="js/forms.js"></script>
 </body>
 </html>
