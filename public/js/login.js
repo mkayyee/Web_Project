@@ -1,46 +1,45 @@
 'use strict';
 const loginValid = (event) => {
 
-  let userName = document.forms['login-form']['username'].value;
-  let password = document.forms['login-form']['password'].value;
+    let userName = document.forms['login-form']['username'].value;
+    let password = document.forms['login-form']['password'].value;
 
-  if (userName === "") {
-    alert("Username is missing.");
-    return false;
-  }
+    if (userName === "") {
+        alert("Username is missing.");
+        return false;
+    }
 
-  if (password === "") {
-    alert("Password is missing.");
-    return false;
-  }
+    if (password === "") {
+        alert("Password is missing.");
+        return false;
+    }
 
-  event.preventDefault();
-  loginSubmit();
+    event.preventDefault();
+    loginSubmit();
 };
 
 const loginSubmit = () => {
-  let profilePic = document.querySelector('.profile-pic');
-  let userName = document.forms['login-form']['username'].value;
-  let password = document.forms['login-form']['password'].value;
+    let userName = document.forms['login-form']['username'].value;
+    let password = document.forms['login-form']['password'].value;
 
-  const data = JSON.stringify({
-    username: userName,
-    password: password
-  });
+    const data = JSON.stringify({
+        username: userName,
+        password: password
+    });
 
-  const settings = {
-    method: 'POST',
-    body: data,
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-    }
-  };
+    const settings = {
+        method: 'POST',
+        body: data,
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+        }
+    };
 
-  fetch('./login', settings)
-  .then((response) => {
-    return response.json();
-  }).then((json) => {
-    hideLogReg(userName);
-  });
+    fetch('./login', settings)
+        .then((response) => {
+            return response.json();
+        }).then((json) => {
+        document.location.reload();
+    });
 };
 

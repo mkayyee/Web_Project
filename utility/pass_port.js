@@ -24,7 +24,6 @@ passport.use(new Strategy(
     }
 ));
 
-//From example "https://github.com/ilkkamtk/express-mysql-example/blob/master/utils/pass.js", to get return object to login fetch
 const log = (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if (err) {
@@ -38,7 +37,7 @@ const log = (req, res, next) => {
           return next(err);
       }
       databaseAccess.getAge(user.username, (age) =>{
-        console.log(age)
+        //console.log(age)
       });
       console.log(`User ${user.username} has logged in`);
       return res.send(req.user);
@@ -59,7 +58,6 @@ passport.deserializeUser((user, cb) => {
 const register = (req, res, next) => {
   const saltRounds = 12;
   bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
-    //console.log(hash);
     databaseAccess.findByUser(req.body.username, (err,res)=>{
       if (res.length > 0){
         // haven't figured out yet how to turn this into an alert...
@@ -73,7 +71,6 @@ const register = (req, res, next) => {
 };
 
 const isLogged = (req, res, next) => {
-  console.log(req.user[0].id);
   if(req.isAuthenticated()) {
     next();
   }
@@ -81,9 +78,11 @@ const isLogged = (req, res, next) => {
     res.sendStatus(403);
   }
 };
+const logOut = ()=>{};
 
 module.exports = {
   register: register,
   isLogged: isLogged,
-  log: log
+  log: log,
+  logOut: logOut,
 };

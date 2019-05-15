@@ -11,7 +11,7 @@ button{
 
 body {
     margin: 0;
-    background-color: #FFE7BA;
+    background-color: cornsilk;
     min-width: 300px;
 }
 
@@ -21,10 +21,11 @@ ul {
 }
 
 .register-login {
-    height: fit-content;
+    height: 50px;
     position: fixed;
+    display: inline-flex;
+    width: 100%;
     top: 0;
-    overflow: hidden;
     background-color: #835C21;
 }
 
@@ -36,11 +37,9 @@ ul {
 .register-login button {
     width: 100px;
     color: #FFE7BA;
-    padding: 5px;
-    display: flex;
     text-decoration: none;
     text-align: center;
-    height: 48px;
+    height: 50px;
     align-items: center;
     background: #835C21;
     border: none;
@@ -52,7 +51,7 @@ ul {
 
 #global-feed {
     text-align: center;
-    margin: 30px auto auto;
+    margin: 30px auto 30px;
     width: 90%;
 }
 
@@ -76,7 +75,8 @@ ul {
 }
 
 #global-feed img {
-    width: 50%;
+    width: 75%;
+    max-height: 420px;
     padding: 10px;
 }
 #global-feed header{
@@ -85,8 +85,10 @@ ul {
     margin-top: 2px;
 }
 .feed-box {
+    overflow: no-display;
     padding: 6px;
     border: 1px solid #835C21;
+    background-color: #FFE7BA;
     margin-top: 60px;
     font-size: 14px;
 }
@@ -94,7 +96,7 @@ ul {
 #feed-bar {
     align-items: center;
     display: flex;
-    height: 30px;
+    height: 50px;
     min-width: 250px;
 }
 .feed-user{
@@ -107,15 +109,11 @@ ul {
     margin-top: 2px;
 }
 
-#feed-right {
-    display: flex;
-    align-items: center;
-    margin-left: 5px;
-}
-
 #feed-bar img {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
+}
+#feed-bar button{
 }
 
 @media only screen and (min-width: 250px) {
@@ -124,106 +122,170 @@ ul {
         width: 90%;
     }
 }
-
-.modal {
-    background-color: rgba(0,0,0,0.4);
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
 article{
-
-}
-.menu-button{
-
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .comment-div{
     height: fit-content;
 }
 .comment-window{
+    height: 200px;
+    overflow: scroll;
     padding: 2px;
-    width: 50%;
+    width: 75%;
     margin: 10px auto 0;
+    background-color: cornsilk;
+    border: 1px solid #835C21;
     text-align: left;
 }
 .sender{
     margin: 2px;
-    color: #2C1704;
+    color: #FF9C09;
 }
-.show-comments{
+#delete-button{
+}
 
+#feed-right{
+    margin-right: 0;
+    margin-left: auto;
 }
 .comment{
+    width: fit-content;
+    margin-left: 10px;
+    display: block;
+}
+.user-info{
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: fit-content;
+}
+.user-info:hover{
+    cursor: pointer;
+    background-color: #F7B649;
+}
+
+.c-form-send{
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    align-items: center;
+}
+.user-window{
+    color: #2C1704;
+    margin-top: 300px;
+    left: 0;
+    width: 300px;
+    position: sticky;
+    background-color: cornsilk;
+    text-align: left;
+}
+.user-window li{
+    border: 1px solid #835C21;
+    padding: 5px;
+    font-size: 20px;
+    height: 40px;
+}
+.user-window button{
+    height: 50px;
+    width: 100%;
+    background-color: #835C21;
+    color: #FFE7BA;
+}
+.pm-div{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+.pm-form{
+    color: #FFE7BA;
+    height: fit-content;
+    background-color: #835C21;
+    align-items: center;
 }
 .comment-box{
     margin: 2px;
-    background-color: #F7B649;
     width: fit-content;
 }
 .comment-send{
     margin-top: 10px;
     height: 100%;
-    width: auto;
+    width: fit-content;
+    display: inline;
     color: #FFE7BA;
     background-color: #835C21;
 }
-.comment-send:hover{
-    color: #2C1704;
-    background-color: #F7B649;
-    border-color: #2C1704;
-}
 .comment-form{
     display: none;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
 }
+
 #user{
     font-size: 30px;
     margin-right: 20px;
 
 }
-
 #profile-pic{
     visibility: hidden;
     height: 40px;
     width: auto;
 }
-
-.upload-div{
-    display: none;
-    padding: 0;
-    margin: 50px 10% -35px;
-    height: fit-content;
-    width: 80%;
-    border: 2px solid #835C21;
-    background-color: #F7B649;
+.upload-dropdown{
+    left: 0;
+    font-size: 30px;
 }
-#upload-form{
-    display: inline;
+.upload-dropdown:hover{
+    background-color: #FFE7BA;
+    color: #2C1704;
+}
+.upload-div{
+    text-align: center;
+    display: none;
+    position: fixed;
+    padding: 0;
     height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    color: #FFE7BA;
+    background-color: #835C21;
+}
+.upload-div li, .upload-div button{
+    height: 50px;
+}
+#upload-form, #upload-video{
+    display: block;
+    height: fit-content;
+    width: 300px;
+    background-color: #835C21;
 }
 #upload-form input, #upload-form button , #upload-form h3, #upload-form input[type=button],
 #upload-video input, #upload-video button, #upload-video h3 #upload-video input[type=button]{
     font-size: 16px;
     color: #2C1704;
-    width: 25%;
+    width: 100%;
 }
 
 #profile-dropdown{
-    color: #2C1704;
-    width: 210px;
-    background-color: #F7B649;
-    border: 2px solid #FF9C09;
+    color: #FFE7BA;
+    width: fit-content;
+    height: 100%;
+    background-color: #835C21;
     padding: 2px;
-    height: fit-content;
+    align-items: center;
 
     visibility: hidden;
     cursor: pointer;
 }
 #profile-dropdown:hover{
     background-color: #FFE7BA;
+    color: #2C1704;
 }
 #profile-menu{
     float: right;
@@ -243,49 +305,57 @@ article{
 .form-div{
     position: fixed;
 }
-#register-form{
-    color: #835C21;
-    height: fit-content;
-    width: 350px;
-    right: 0;
-    visibility: hidden;
-    background-color: #F7B649;
-}
-#profile-pic-form{
 
+.pic-comments{
+    height: fit-content;
+    width: 100%;
 }
 #profile-pic-form-visible{
-    color: #835C21;
+    color: #FFE7BA;
     height: fit-content;
     width: 350px;
     right: 0;
     visibility: hidden;
-    background-color: #F7B649;
+    background-color: #2C1704;
 }
 .log-reg-form{
     height: fit-content;
     width: fit-content;
     float: right;
 }
+#register-form{
+    color: #FFE7BA;
+    height: fit-content;
+    width: 350px;
+    right: 0;
+    visibility: hidden;
+    background-color: #835C21;
+}
+
 #login-form{
     right: 0;
-    color: #835C21;
+    color: #FFE7BA;
     height: fit-content;
     width: 300px;
     visibility: hidden;
-    background-color: #F7B649;
+    background-color: #835C21;
 }
-
-
-#register-form button, #login-form button, .button-menu-style,#register-form input[type=submit] , #login-form input[type=submit]{
-    color: #F7B649;
-    background-color: #FF9C09;
+#message{
+    height: auto;
+    overflow: auto;
+}
+#register-form button, #login-form button, .button-menu-style,#register-form input[type=submit] , #login-form input[type=submit], #global-feed .show-comments, .delete-button, .upload-div button, .pm-form button{
+    background-color: #835C21;
+    color: #FFE7BA;
     width: 100%;
 }
 
-#register-form button:hover, #login-form button:hover,.button-menu-style:hover{
+#register-form button:hover, #login-form button:hover,.button-menu-style:hover ,#global-feed button:hover, .upload-div button:hover, .pm-form button:hover{
     color: #2C1704;
     background-color: #FFE7BA;
+}
+#global-feed .show-comments{
+    width: 75%;
 }
 #register-form input, #login-form input{
     color: #2C1704;
@@ -296,23 +366,36 @@ article{
     color: #2C1704;
     background-color: #FFE7BA;
     cursor: pointer;
-
-
 }
 .button-menu-style{
     width: 200px;
 }
-@media only screen and (max-width: 420px) {
-    .register-login{
-    }
-    .register-login li {
-        width: 50%;
-    }
-    .register-login li button{
-        padding: 0;
-        margin-right: auto;
-        margin-left: auto;
+
+@media only screen and (max-width: 450px) {
+
+    .register-login li button {
         text-align: center;
-        width:100%;
+        margin: auto;
+    }
+
+    #register-form, #login-form, #profile-dropdown, #profile-menu, #profile-menu-list #profile-dropdown button{
+        font-size: 30px;
+        width: 100%;
+
+    }
+    #profile-menu-list button{
+        font-size: 30px;
+        width: 100%;
+        height: 50px;
+    }
+    #login-form input,#register-form input, #profile-dropdown input #login-form button, #register-form button, #profile-dropdown button, form button{
+        height: 40px;
+        font-size: 30px;
+    }
+    #profile-dropdown{
+        height: 100%;
+        width: fit-content;
+        padding: 2px;
+        visibility: hidden;
     }
 }
